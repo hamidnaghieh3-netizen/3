@@ -2,9 +2,9 @@
 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Depends
 from typing import List
-from backend.db import get_db
+from app.db import get_db
 from sqlalchemy.orm import Session
-from backend.models import Bid   # <-- IMPORTANT
+
 
 router = APIRouter()
 

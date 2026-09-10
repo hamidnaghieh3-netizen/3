@@ -5,11 +5,12 @@ from fastapi.staticfiles import StaticFiles
 from app.routers.auth import router as auth_router
 from app.routers.auctions import router as auctions_router
 from app.routers.bids import bids_router
-from app.routers import bids
 from app.routers.lots import lots_router
 from app.routers.invoices import router as invoices_router
-from backend.routers import auctions, bids, auth
-from backend import live_bidding
+
+from app import live_bidding
+
+
 
 
 app = FastAPI(
@@ -21,13 +22,10 @@ app = FastAPI(
 # ⭐ ROUTERS MUST BE INCLUDED BEFORE custom_openapi
 app.include_router(auth_router)
 app.include_router(auctions_router)
-app.include_router(bids_router, prefix="/bids", tags=["Bids"])
 app.include_router(lots_router)
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 app.include_router(invoices_router)
-app.include_router(auth.router)
-app.include_router(auctions.router)
-app.include_router(bids.router)
+app.include_router(bids_router)
 app.include_router(live_bidding.router)
 
 def custom_openapi():
