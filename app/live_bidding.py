@@ -4,6 +4,7 @@ from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Depends
 from typing import List
 from app.db import get_db
 from sqlalchemy.orm import Session
+from app.models import Bid
 
 
 router = APIRouter()
